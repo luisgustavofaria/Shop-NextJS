@@ -1,4 +1,6 @@
 'use client';
+// esse é um codigo para resolver o problema de renderização
+// esse codigo não está sendo usado por enquanto
 import React, { useEffect } from 'react';
 
 interface IProp {

@@ -6,20 +6,23 @@ import theme from '@/styles/theme';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import Image from 'next/image';
-import RouterMounting from '@/components/layout/errorNextImage/useClient';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RouterMounting>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Container>
-          <Header>
-            <Image src={logo} alt="" width={130} height={52} priority={true} />
-          </Header>
-          <Component {...pageProps} />;
-        </Container>
-      </ThemeProvider>
-    </RouterMounting>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <Header>
+          <Image
+            src={logo}
+            alt=""
+            width={130}
+            height={52}
+            blurDataURL={'../assets/logo.svg'}
+          />
+        </Header>
+        <Component {...pageProps} />;
+      </Container>
+    </ThemeProvider>
   );
 }
