@@ -11,6 +11,6 @@ export const Container = styled.div`
 export const Header = styled.div`
   padding: 2rem 0;
   width: 100%;
-  max-width: 1180;
+  max-width: 1180px;
   margin: 0 auto;
 `;
