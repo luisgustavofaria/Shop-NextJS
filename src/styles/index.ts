@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import theme from '@/styles/theme';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -8,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: 'Inter', sans-serif;
+    background-color: ${(props) => props.theme.color.gray900};
   }
   
   body, input, textarea, button {

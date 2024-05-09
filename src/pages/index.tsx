@@ -61,7 +61,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       price: price.unit_amount !== null ? price.unit_amount / 100 : 0,
     };
   });
-  console.log(products);
 
   return {
     props: {
@@ -69,20 +68,3 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 };
-
-// const response = await stripe?.products.list({
-//   expand: ['data.default_price'],
-// });
-
-// const products = response?.data.map((product) => {
-//   const price = product.default_price as Stripe.Price;
-//   const imageUrl =
-//     product.images && product.images.length > 0 ? product.images[0] : null;
-
-//   return {
-//     id: product.id,
-//     name: product.name,
-//     imageUrl: imageUrl,
-//     price: price.unit_amount !== null ? price.unit_amount / 100 : 0,
-//   };
-// });
