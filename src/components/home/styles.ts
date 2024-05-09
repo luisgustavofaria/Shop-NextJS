@@ -47,6 +47,7 @@ export const Product = styled.a`
 
     strong {
       font-size: 1.5rem;
+      color: ${(props) => props.theme.color.gray100};
     }
 
     span {

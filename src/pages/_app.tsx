@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import Image from 'next/image';
 import RouterMounting from '@/components/layout/errorNextImage/useClient';
+import Link from 'next/link';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,13 +16,15 @@ export default function App({ Component, pageProps }: AppProps) {
       <RouterMounting>
         <Container>
           <Header>
-            <Image
-              src={logo}
-              alt=""
-              width={130}
-              height={52}
-              blurDataURL={'../assets/logo.svg'}
-            />
+            <Link href={'/'}>
+              <Image
+                src={logo}
+                alt=""
+                width={130}
+                height={52}
+                blurDataURL={'../assets/logo.svg'}
+              />
+            </Link>
           </Header>
           <Component {...pageProps} />;
         </Container>
