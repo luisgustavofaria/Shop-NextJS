@@ -6,8 +6,9 @@ import {
 
 import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 interface ProductProps {
   product: {
@@ -20,6 +21,12 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
+  // mostrar uma div antes de carregar product
+  // const { isFallback } = useRouter();
+  // if (isFallback) {
+  //   return <div>Carregando...</div>;
+  // }
+
   return (
     <ProductContainer>
       <ImageContainer>
@@ -28,7 +35,7 @@ export default function Product({ product }: ProductProps) {
 
       <ProductDetails>
         <h1>{product.name}</h1>
-        <span>{product.price}</span>
+        <span>R$ {product.price}</span>
 
         <p>{product.description}</p>
 
@@ -37,6 +44,22 @@ export default function Product({ product }: ProductProps) {
     </ProductContainer>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [
+      {
+        params: {
+          id: 'prod_Q4LU6td4oaQouc',
+        },
+      },
+    ],
+    fallback: 'blocking',
+    // false para carregar apenas o id que esta no params
+    // true para carregar todos os ids
+    // blocking para mostrar todos id apenas quando todos estiverem carregado
+  };
+};
 
 export const getStaticProps: GetStaticProps<any, { id: string }> = async ({
   params,
